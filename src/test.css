@@ -45,7 +45,7 @@
     filter: brightness(0) invert(1);
 }
 
-.features .accordion-title h5{
+.features .accordion-title h5 p{
     font-size: 16px;
     line-height: 34px;
     font-weight: 500;
