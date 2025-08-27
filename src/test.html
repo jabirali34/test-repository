@@ -1,0 +1,42 @@
+<div class="features">
+    <div class="feature-content">
+      <h3 class="heading-2">{{ module.heading }}</h3>
+      <div class="feature-accordion">
+        
+        {% for item in module.accordion %}
+        <div class="accordion-title">
+          <span>
+            	{% if item.title_icon.src %}
+                {% set sizeAttrs = 'width="{{ item.title_icon.width|escape_attr }}" height="{{ item.title_icon.height|escape_attr }}"' %}
+                {% if item.title_icon.size_type == 'auto' %}
+                  {% set sizeAttrs = 'width="{{ item.title_icon.width|escape_attr }}" height="{{ item.title_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% elif item.title_icon.size_type == 'auto_custom_max' %}
+                  {% set sizeAttrs = 'width="{{ item.title_icon.max_width|escape_attr }}" height="{{ item.title_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                 {% set loadingAttr = item.title_icon.loading != 'disabled' ? 'loading="{{ item.title_icon.loading|escape_attr }}"' : '' %}
+                <img src="{{ item.title_icon.src|escape_url }}" alt="{{ item.title_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+              {% endif %}
+          </span>
+          <h5> {{ item.title }} </h5>
+        </div>
+        <div class="accordion-content">
+          {{ item.content }}
+        </div>          
+        {% endfor %}
+        
+      </div>
+    </div>
+    <div class="feature-image">
+      {% if module.feature_image.src %}
+        {% set sizeAttrs = 'width="{{ module.feature_image.width|escape_attr }}" height="{{ module.feature_image.height|escape_attr }}"' %}
+        {% if module.feature_image.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ module.feature_image.width|escape_attr }}" height="{{ module.feature_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+        {% elif module.feature_image.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ module.feature_image.max_width|escape_attr }}" height="{{ module.feature_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+         {% set loadingAttr = module.feature_image.loading != 'disabled' ? 'loading="{{ module.feature_image.loading|escape_attr }}"' : '' %}
+        <img src="{{ module.feature_image.src|escape_url }}" alt="{{ module.feature_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+    </div>
+</div>
+
